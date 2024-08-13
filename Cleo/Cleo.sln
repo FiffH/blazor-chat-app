@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35208.52
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleo", "Cleo\Cleo\Cleo.csproj", "{28408D75-B2EF-4596-B778-B33582BF2F72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleo.Client", "Cleo\Cleo.Client\Cleo.Client.csproj", "{74127561-3338-43DC-A1F8-6312888C3333}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28408D75-B2EF-4596-B778-B33582BF2F72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28408D75-B2EF-4596-B778-B33582BF2F72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28408D75-B2EF-4596-B778-B33582BF2F72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28408D75-B2EF-4596-B778-B33582BF2F72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74127561-3338-43DC-A1F8-6312888C3333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74127561-3338-43DC-A1F8-6312888C3333}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74127561-3338-43DC-A1F8-6312888C3333}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74127561-3338-43DC-A1F8-6312888C3333}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {78F5BF00-3069-4AD8-AF18-2FDC61177CBE}
+	EndGlobalSection
+EndGlobal
