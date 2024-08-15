@@ -1,4 +1,6 @@
 ﻿@using Microsoft.AspNetCore.SignalR.Client
+@using Cleo.Shared.Models
+
 
 @page "/room"
 @rendermode InteractiveWebAssembly
@@ -7,6 +9,7 @@
 
 @code {
     private HubConnection? hubConnection;
+    private List<Message> Messages = new();
 
 
 }
