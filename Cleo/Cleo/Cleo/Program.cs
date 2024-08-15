@@ -1,3 +1,4 @@
+using Cleo.ChatroomHubs;
 using Cleo.Client.Pages;
 using Cleo.Components;
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
+builder.Services.AddSignalR();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,5 +31,6 @@ app.UseAntiforgery();
 app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(Cleo.Client._Imports).Assembly);
+app.MapHub<CleoHub>("/chatroomhub");
 
 app.Run();
