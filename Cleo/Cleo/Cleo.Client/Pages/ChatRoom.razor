@@ -1,15 +1,81 @@
 ﻿@using Microsoft.AspNetCore.SignalR.Client
 @using Cleo.Shared.Models
-
+@inject NavigationManager NavManager
 
 @page "/room"
 @rendermode InteractiveWebAssembly
 
 <PageTitle>ChatRoom</PageTitle>
 
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="class-header">
+                CleoChat
+            </div>
+            <div class="card-body">
+                <ul class="message-list">
+                    @foreach (var msg in messages)
+                    {
+                        <li class="mb-2">
+                            @msg.DateTime <br />
+                            @msg.User.Username <br />
+                            @msg.Text <br />
+                        </li>
+                    }
+                </ul>
+                <div class="border-primary">
+                    <div class="hstack gap-2 mb-4">
+                        <input type="text" class="form-control w-25" @bind="username" />
+                        <textarea class="form-control" @bind="message" />
+                    </div>
+                    <button class="btn btn-success" @onclick="Send">Send Message</button>
+                </div>
+            </div>
+            <div class="card-footer">
+                @if(!isConnected)
+                {
+                    <div class="alert alert-danger">Chat Disconnected</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
 @code {
     private HubConnection? hubConnection;
-    private List<Message> Messages = new();
+    List<Message> messages = new();
 
+    private string username;
+    public string message;
+    private DateTime dateTime = DateTime.Now;
 
+    protected async override Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+        .WithUrl(NavManager.ToAbsoluteUri("/chatroom-hub"))
+        .Build();
+
+        hubConnection.On<string, string, DateTime>("ReceiveMessage", (message, username, dateTime) => {
+
+            messages.Add(new Message()
+            {
+                User = new User()
+                {
+                    Username = username
+                },
+                Text = message,
+                DateTime = DateTime.Now
+            });
+
+            InvokeAsync(() => StateHasChanged());
+        });
+
+        await hubConnection.StartAsync();
+    }
+
+    private bool isConnected => 
+    hubConnection!.State == HubConnectionState.Connected;
+
+    Task Send() =>
+    hubConnection.SendAsync("SendMessage", username, message, dateTime);
 }

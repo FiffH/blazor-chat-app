@@ -31,6 +31,6 @@ app.UseAntiforgery();
 app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(Cleo.Client._Imports).Assembly);
-app.MapHub<CleoHub>("/chatroomhub");
+app.MapHub<CleoHub>("/chatroom-hub");
 
 app.Run();

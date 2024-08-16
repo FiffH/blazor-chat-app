@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cleo", "Cleo\Cleo\Cleo.cspr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cleo.Client", "Cleo\Cleo.Client\Cleo.Client.csproj", "{74127561-3338-43DC-A1F8-6312888C3333}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleo.Shared", "Cleo.Shared\Cleo.Shared.csproj", "{BE3CB10D-C2A7-4C2E-AC89-4BA3285C442E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{74127561-3338-43DC-A1F8-6312888C3333}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74127561-3338-43DC-A1F8-6312888C3333}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74127561-3338-43DC-A1F8-6312888C3333}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE3CB10D-C2A7-4C2E-AC89-4BA3285C442E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE3CB10D-C2A7-4C2E-AC89-4BA3285C442E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE3CB10D-C2A7-4C2E-AC89-4BA3285C442E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE3CB10D-C2A7-4C2E-AC89-4BA3285C442E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
