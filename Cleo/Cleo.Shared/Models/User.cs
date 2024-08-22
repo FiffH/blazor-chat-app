@@ -8,7 +8,7 @@ namespace Cleo.Shared.Models
 {
     public class User
     {
-        public string Username { get; set; }
+        public string Username { get; set; } = string.Empty;
         //public string Role { get; set; }
     }
 }

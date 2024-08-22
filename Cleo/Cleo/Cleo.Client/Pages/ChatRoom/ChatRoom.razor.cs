@@ -6,12 +6,10 @@ namespace Cleo.Client.Pages.ChatRoom
 {
     public partial class ChatRoom
     {
+        public static string? storedUserName { get; set; }
         private HubConnection? hubConnection;
+        private Message newMessage = new();
         List<Message> messages = new();
-
-        private string username;
-        public string message;
-        private DateTime dateTime = DateTime.Now;
 
         protected async override Task OnInitializedAsync()
         {
@@ -19,17 +17,9 @@ namespace Cleo.Client.Pages.ChatRoom
             .WithUrl(NavManager.ToAbsoluteUri("/chatroom-hub"))
             .Build();
 
-            hubConnection.On<string, string, DateTime>("ReceiveMessage", (message, username, dateTime) => {
+            hubConnection.On<Message>("ReceiveMessage", (message) => {
 
-                messages.Add(new Message()
-                {
-                    User = new User()
-                    {
-                        Username = username
-                    },
-                    Text = message,
-                    DateTime = DateTime.Now
-                });
+                messages.Add(message);
 
                 InvokeAsync(() => StateHasChanged());
             });
@@ -40,7 +30,24 @@ namespace Cleo.Client.Pages.ChatRoom
         private bool isConnected =>
         hubConnection!.State == HubConnectionState.Connected;
 
-        Task Send() =>
-        hubConnection.SendAsync("SendMessage", username, message, dateTime);
+        void Send()
+        {
+            newMessage.User.Username ??= storedUserName;
+            hubConnection.SendAsync("SendMessage", newMessage);
+        }
+
+        void SendMessageClicked()
+        {
+            newMessage.DateTime = DateTime.Now;
+            if (!string.IsNullOrEmpty(newMessage.User.Username))
+            {
+                storedUserName = newMessage.User.Username;
+            }
+
+            Send();
+            newMessage.Text = string.Empty;
+
+        }
+        
     }
 }

@@ -24,15 +24,19 @@
                         </li>
                     }
                 </ul>
-                <div class="border-primary">
-                    <div class="hstack gap-2 mb-4">
-                        <input type="text" class="form-control w-25" @bind="username" />
-                        <textarea class="form-control" @bind="message" />
-                    </div>
-                    <button class="btn btn-success" @onclick="Send">Send Message</button>
+                <div class="mt-3">
+                    <EditForm Model="newMessage" OnValidSubmit="SendMessageClicked">
+                        <DataAnnotationsValidator />
+                        <div class="vstack gap-1">
+                            <InputText @bind-Value="newMessage.User.Username" class="form-control w-25" placeholder="Username"/>
+                            <InputTextArea @bind-Value="newMessage.Text" class="form-control" placeholder="Message"/>
+                        </div>
+                        <button class="float-end btn btn-success mt-3" type="submit">Send</button>
+                    </EditForm>
                 </div>
+
             </div>
-            <div class="card-footer">
+            <div class="card-footer fw-bold">
                 @if(!isConnected)
                 {
                     <div class="alert alert-danger">Chat Disconnected</div>

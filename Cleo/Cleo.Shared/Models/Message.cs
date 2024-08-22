@@ -10,7 +10,7 @@ namespace Cleo.Shared.Models
     {
         public string Text { get; set; }
         public DateTime DateTime { get; set; }
-        public User User { get; set; }
+        public User User { get; set; } = new User();
 
     }
 }
