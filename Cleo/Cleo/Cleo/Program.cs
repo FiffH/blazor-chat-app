@@ -1,5 +1,6 @@
 using Cleo.ChatroomHubs;
 using Cleo.Client.Pages;
+using Cleo.Client.Services;
 using Cleo.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,8 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddSignalR();
+builder.Services.AddScoped<ChatroomService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
