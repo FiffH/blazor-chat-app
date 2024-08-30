@@ -2,6 +2,9 @@ using Cleo.ChatroomHubs;
 using Cleo.Client.Pages;
 using Cleo.Client.Services;
 using Cleo.Components;
+using Cleo.Data;
+using Cleo.Repos;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +12,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
+builder.Services.AddDbContext<AppDbContext>(o => 
+    o.UseSqlite(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddSignalR();
 builder.Services.AddScoped<ChatroomService>();
+builder.Services.AddScoped<ChatroomRepository>();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -35,5 +42,6 @@ app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(Cleo.Client._Imports).Assembly);
 app.MapHub<CleoHub>("/chatroom-hub");
+app.MapControllers();
 
 app.Run();
