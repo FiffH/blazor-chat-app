@@ -11,9 +11,10 @@ namespace Cleo.Shared.Models
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
-        public string Text { get; set; }
+        public string Text { get; set; } = string.Empty;
         public DateTime DateTime { get; set; }
-        public User User { get; set; } = new User();
+
+        public string Username { get; set; } = string.Empty;
 
     }
 }

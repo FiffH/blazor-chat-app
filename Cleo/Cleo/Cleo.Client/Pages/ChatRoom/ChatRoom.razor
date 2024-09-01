@@ -23,7 +23,7 @@
                     {
                         <li class="mb-2">
                             @msg.DateTime <br />
-                            @msg.User.Username <br />
+                            @msg.Username <br />
                             @msg.Text <br />
                         </li>
                     }
@@ -32,7 +32,7 @@
                     <EditForm Model="newMessage" OnValidSubmit="SendMessageOnClick">
                         <DataAnnotationsValidator />
                         <div class="vstack gap-1">
-                            <InputText @bind-Value="newMessage.User.Username" class="form-control w-25 fw-bold" placeholder="Username"/>
+                            <InputText @bind-Value="newMessage.Username" class="form-control w-25 fw-bold" placeholder="Username"/>
                             <InputTextArea @bind-Value="newMessage.Text" class="form-control" placeholder="Message"/>
                         </div>
                         <button class="float-end btn btn-success mt-3" type="submit">Send</button>
